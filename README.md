@@ -8,3 +8,11 @@
 ### Documentation for repo mvc-project by mack20.  
 A project to examinate the course mvc at BTH. 
 Part of the course mvc at BTH.
+
+## Yatzy
+![Dices](resources/img/dice.png)
+
+Select dices to keep, non selected dices will be rerolled.
+
+Choose where to put score into scorebox after maximum three rolls.
+

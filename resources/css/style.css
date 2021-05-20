@@ -203,7 +203,7 @@ input[type="checkbox"] { /* change "blue" browser chrome to yellow */
   transform: scale(1.5);
 }
 
-input[type="radio"] { /* change "blue" browser chrome to yellow */
+input[type="radio"] { /* change "blue" browser chrome to red */
     filter: hue-rotate(139deg) brightness(1.7);
   /* Double-sized Checkboxes */
   -ms-transform: scale(1.5); /* IE */
@@ -221,6 +221,7 @@ input[type="text"] {
 
 .img {
     width: 50%;
+    filter: hue-rotate(347deg) brightness(1.10);
 }
 
 .books {

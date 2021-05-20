@@ -6,7 +6,6 @@ $style = url("/../resources/css/style.css");
 $home = url('/');
 $session = url('/session');
 $test = url('/test');
-$game21 = url("/game21/home");
 $yatzy = url("/yatzy/home");
 $highscore = url("/yatzy/highscore");
 $statistics = url("/yatzy/statistics");
@@ -30,7 +29,6 @@ $book = url('/books');
         <a class="active" href="{{ $home }}">Home</a>
         <a href="{{ $session }}">Session</a>
         <a href="{{ $test }}">Test</a>
-        <a href="{{ $game21 }}">21</a>
         <a href="{{ $yatzy }}">Yatzy</a>
         <a href="{{ $highscore }}">High Score</a>
         <a href="{{ $statistics }}">Statistics</a>
