@@ -7,22 +7,24 @@ namespace Mack\Dice;
 /**
  * Cheat Dice.
  */
-class CheatDice extends Dice
+class CheatDice extends GraphicalDice
 {
-    private const FACES = 6;
+    // private const FACES = 6;
+    public $cheat = 6;
 
     /**
      * Constructor to initiate the dice with six number of sides.
      */
-    public function __construct()
+    public function __construct($cheat)
     {
-        parent::__construct(self::FACES);
+        // parent::__construct(self::FACES);
+        $this->cheat = $cheat;
     }
 
-    public function roll($cheat = 6): int
+    public function roll(): int
     {
-        $this->roll = $cheat;
-        $this->addToHistogram($this->roll);
+        $this->roll = $this->cheat;
+        // $this->addToHistogram($this->roll);
 
         return $this->roll;
     }

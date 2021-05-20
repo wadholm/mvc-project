@@ -9,6 +9,9 @@ $numberOfDices = 5;
 
 <h1>{{ $header }}</h1>
 
+<p>{{ $message }}</p>
+<p>{{ $instructions }}</p>
+
 <form method="POST" action="{{ $play }}">
 @csrf
 <input type="hidden" id="start" name="start" value="start">

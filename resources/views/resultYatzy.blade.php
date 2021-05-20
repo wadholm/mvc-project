@@ -1,22 +1,19 @@
 <?php
 
 $home = url("/yatzy/home");
-$showHighscore = url("/yatzy/highscore/add");
+$addHighscore = url("/yatzy/highscore/add");
 
 
 $header = $header ?? null;
-
-$result = $request->session()->get('result', null);
-$score = $request->session()->get('score', null);
-
 $totalScore = $totalScore ?? null;
-$bonusScore = $bonusScore ?? null;
-$bonus = $bonus ?? null;
+$rounds = $rounds ?? null;
 
 $highscore = $highscore ?? null;
 $newHighscore = $newHighscore ?? null;
 
 ?>
+<div class="yatzy-div">
+<div class="text">
 
 <h1>{{ $header }}</h1>
 
@@ -24,7 +21,7 @@ $newHighscore = $newHighscore ?? null;
 @if ($newHighscore == true)
 <p>Congratulations! You scored a new high score!</p>
 
-<form method="POST" action="{{ $showHighscore }}">
+<form method="POST" action="{{ $addHighscore }}">
 @csrf
 <input type="hidden" id="score" name="score" value="{{ $totalScore }}">
 <label for="name">Name:</label>
@@ -39,15 +36,20 @@ $newHighscore = $newHighscore ?? null;
     <a class="play" href="{{ $home }}">Play again?</a>
 </button>
 </p>
-
-<div class="scoreboard">
-<h4>Score board.</h4>
-<p>{!! $result !!} </p>
-<p>Sum: {{ $totalScore }} </p>
-@if ($bonus == true)
-    <p>Bonus: {{ $bonusScore }} </p>
-    <p>{{ $totalScore += $bonusScore }}</p>
-    <p>Total: {{ $totalScore }} </p>
-@endif
 </div>
+
+<table>
+    <tr>
+        <th>Game</th>
+        <th> </th>
+    </tr>
+    @foreach ($rounds as $r => $r_value)
+    <tr>
+        <td>{{ $r }}</td>
+        <td>{{ $r_value }}</td>
+    </tr>
+    @endforeach
+</table>
+<div>
+
 

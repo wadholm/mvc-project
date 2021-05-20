@@ -18,13 +18,18 @@ class HistogramTraitTest extends TestCase
     public function testPrintHistogram()
     {
         // Arrange
-        $die = new CheatDice();
-        $die->roll(1);
-        $die->roll(2);
-        $die->roll(3);
-        $die->roll(4);
-        $die->roll(5);
-        $die->roll(6);
+        $die = new CheatDice(1);
+        $die->roll();
+        $die = new CheatDice(2);
+        $die->roll();
+        $die = new CheatDice(3);
+        $die->roll();
+        $die = new CheatDice(4);
+        $die->roll();
+        $die = new CheatDice(5);
+        $die->roll();
+        $die = new CheatDice(6);
+        $die->roll();
         $res = $die->printHistogram();
         // $diceHand->addDice(new GraphicalDice());
         // $res = $diceHand->roll();

@@ -6,6 +6,7 @@ namespace Mack\Game;
 
 use Mack\Dice\DiceHand;
 use Mack\Helper\Helper;
+use Mack\Game\Score;
 
 // use function Mos\Functions\{
 //     destroySession,
@@ -24,8 +25,10 @@ class PlayYatzy
 {
     public $numberOfDices = 5;
     public $checkedBoxes;
+    public array $savedDices = [];
+    public $choosenRound;
     public $res;
-    public $bonus = false;
+    public $graphics;
     public $dices = [
         "dice-1",
         "dice-2",
@@ -33,14 +36,11 @@ class PlayYatzy
         "dice-4",
         "dice-5"
     ];
-    public $rounds = [
-        "round-1",
-        "round-2",
-        "round-3",
-        "round-4",
-        "round-5",
-        "round-6"
-    ];
+    public $rounds = array(
+        "Aces" => "", "Twos" => "", "Threes" => "", "Fours" => "", "Fives" => "", "Sixes" => "",
+        "SUM (63)" => 0, "BONUS" => 0, "Pair" => "", "Two Pair" => "", "3 of a kind" => "","4 of a kind" => "",
+        "Small Straight" => "", "Large Straight" => "", "Full House" => "", "Chance" => "", "YATZY" => "", "TOTAL" => 0
+        );
 
     public function startGame($request)
     {
@@ -50,10 +50,16 @@ class PlayYatzy
         //     $this->resetSessionRounds();
         // }
         if ($request->has('start')) {
-            session(['result' => null]);
-            session(['score' => null]);
-            $this->resetSessionRounds($request);
+            // session(['result' => null]);
+            // session(['score' => null]);
+            session(['rounds' => null]);
+            // $this->resetSessionRounds($request);
         }
+    }
+
+    public function getRounds()
+    {
+        return $this->rounds;
     }
 
     public function getFirstNumberOfDices()
@@ -71,7 +77,7 @@ class PlayYatzy
     public function getCheckedBoxes($request)
     {
         foreach ($this->dices as $dice) {
-            if ($request->has($dice) && $request->input($dice) == $request->input("round")) {
+            if ($request->has($dice)) {
                 $this->checkedBoxes++;
             }
             // if (isset($_POST[$dice]) && $_POST[$dice] == $_POST["round"]) {
@@ -81,55 +87,48 @@ class PlayYatzy
         return $this->checkedBoxes;
     }
 
-    public function getSessionRounds($request)
+    public function getSavedDices($request)
     {
-        foreach ($this->rounds as $round) {
-            // $_SESSION[$round] = $_SESSION[$round] ?? 0;
-            $request->session()->put($round, session($round) ?? 0);
+        foreach ($this->dices as $dice) {
+            if ($request->has($dice)) {
+                $this->savedDices[] = (int)$request->input($dice);
+            }
+            // if (isset($_POST[$dice]) && $_POST[$dice] == $_POST["round"]) {
+            //     $this->checkedBoxes++;
+            // }
         }
+        return $this->savedDices;
     }
 
-    public function resetSessionRounds($request)
+    public function getChoosenRound($request)
     {
-        foreach ($this->rounds as $round) {
-            $_SESSION[$round] = 0;
-            $request->session()->put($round, 0);
+        if ($request->has("choosenRound")) {
+            $this->choosenRound = $request->input("choosenRound");
         }
+        // if (isset($_POST[$dice]) && $_POST[$dice] == $_POST["round"]) {
+        //     $this->checkedBoxes++;
+        // }
+        return $this->choosenRound;
     }
 
-    public function addScore($round, $request)
+    public function setRounds($savedRounds)
     {
-        for ($i = 0; $i < $this->checkedBoxes; $i++) {
-            $request->session()->push('score', $round);
-            // $_SESSION["score"][] = $round;
-        }
+        $this->rounds = $savedRounds;
     }
 
-    public function getMessage($round, $roll)
-    {
-        $this->res["message"] = "Select dices to save, then roll again.";
-
-        if ($roll == 3) {
-            $this->res["message"] = "Select dices to save.";
-        } elseif ($roll == 4) {
-            $this->res["message"] = "You rolled " . session("round-$round") . " dices with the value of " . $round . ".";
-        }
-        return $this->res["message"];
-    }
-
-    public function playGame($rollDices, $round, $roll, $request)
+    public function playGame($rollDices, $roll, $request)
     {
         if ($rollDices != null && $rollDices == "rolldices") {
             $this->getCheckedBoxes($request);
             $this->numberOfDices = $this->getNumberOfDices($request) - $this->checkedBoxes;
-            $this->res = $this->rollDices($round, $roll, $request);
+            $this->savedDices = $this->getSavedDices($request);
+            $this->res = $this->rollDices($roll, $request);
         }
         return $this->res;
     }
 
-    public function rollDices($round, $roll, $request)
+    public function rollDices($roll, $request)
     {
-        $this->res["round"] = $round;
         $this->res["roll"] = $roll;
 
         $diceHand = new DiceHand();
@@ -137,65 +136,35 @@ class PlayYatzy
             $this->numberOfDices = $this->getFirstNumberOfDices();
         }
         $helper = new Helper();
-        $diceHand = $helper->addDices($diceHand, $this->numberOfDices);
+
+        $diceHand = $helper->addDices2($diceHand, $this->numberOfDices, $this->savedDices);
         $this->res["numberOfDices"] = $this->numberOfDices;
 
-        if ($this->numberOfDices != 0) {
+
+        if (($this->numberOfDices + count($this->savedDices)) != 0) {
             $diceHand->roll();
         }
 
-        // // $_SESSION[$round] = $_SESSION[$round] ?? 0;
-        // $request->session()->put('round', session('round') ?? 0);
-
-        $request->session()->put("round-$round", session("round-$round") + $this->checkedBoxes);
-        // $_SESSION["round-$round"] = $_SESSION["round-$round"] + $this->checkedBoxes;
-
-        if ((int)$request->input("round-$round") == 5) {
-            $request->session()->put("yatzy", "You rolled Yatzy!!");
-            // $_SESSION["yatzy"] = "You rolled Yatzy!!";
-            $roll = 4;
-        }
-
-        $this->addScore($round, $request);
-
         $this->res["graphics2rolls"] = $diceHand->getGraphics2Rolls();
-        $this->res["message"] = $this->getMessage($round, $roll);
+        $this->res["message"] = "Select dices to keep, then reroll or save result.";
+        $this->res["sum"] = $diceHand->sum();
 
-        if ($roll == 4) {
-            $this->res["round"] = $round + 1;
+
+        if ($roll == 4 || $request->has("choosenRound")) {
+            $this->getChoosenRound($request);
+            $score = new Score();
+            $returned = $score->addScore($this->choosenRound, $this->savedDices, $this->rounds);
+            $this->rounds = $returned["rounds"];
+            $this->res["message"] = $returned["message"];
             $this->res["roll"] = 0;
             $this->res["graphics2rolls"] = null;
-            if ($this->res["round"] > 6) {
-                $helper = new Helper();
-                $request->session()->put("result", $helper->printHistogram(session("score")));
-                // $_SESSION["result"] = printHistogram(session("score"));
+            $request->session()->put('rounds', $this->rounds);
+            $this->res["rounds"] = $this->rounds;
+
+            if (array_search("", $this->rounds, true) == false) {
+                $this->res["result"] = "result";
             }
         }
         return $this->res;
-    }
-
-    public function calculateTotalScore($score)
-    {
-        $this->res["totalScore"] = 0;
-        if ($score != null) {
-            foreach ($score as $value) {
-                $this->res["totalScore"] += $value;
-            }
-        }
-        return $this->res["totalScore"];
-    }
-
-    public function checkForBonus()
-    {
-        $bonusflag = 0;
-        foreach ($this->rounds as $round) {
-            if (session($round) >= 3) {
-                $bonusflag += 1;
-            }
-        }
-        if (isset($this->res["totalScore"]) && $this->res["totalScore"]  >= 63 && $bonusflag == 6) {
-            $this->bonus = true;
-        }
-        return $this->bonus;
     }
 }

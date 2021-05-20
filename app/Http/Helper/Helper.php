@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mack\Helper;
 
+use Mack\Dice\CheatDice;
 use Mack\Dice\GraphicalDice;
 
 class Helper
@@ -13,10 +14,28 @@ class Helper
      *
      * @return object
      */
-    public function addDices($diceHand, $numberDices): object
+    public function addDices($diceHand, $newDices): object
     {
-        for ($i = 0; $i < $numberDices; $i++) {
+        for ($i = 0; $i < $newDices; $i++) {
             $diceHand->addDice(new GraphicalDice());
+        }
+        return $diceHand;
+    }
+
+    /**
+     * Add dices.
+     *
+     * @return object
+     */
+    public function addDices2($diceHand, $newDices, $savedDices = []): object
+    {
+
+        for ($i = 0; $i < $newDices; $i++) {
+            $diceHand->addDice(new GraphicalDice());
+        }
+
+        foreach ($savedDices as $value) {
+            $diceHand->addDice(new CheatDice($value));
         }
         return $diceHand;
     }

@@ -127,26 +127,26 @@ class YatzyTest extends TestCase
     /**
      * Test to get message roll 1 or 2
      */
-    public function testGetMessageRoll1()
-    {
-        $game = new PlayYatzy();
+    // public function testGetMessageRoll1()
+    // {
+    //     $game = new PlayYatzy();
 
-        $res = $game->getMessage(1, 1);
-        $exp = "Select dices to save, then roll again.";
-        $this->assertEquals($exp, $res);
-    }
+    //     $res = $game->getMessage(1, 1);
+    //     $exp = "Select dices to save, then roll again.";
+    //     $this->assertEquals($exp, $res);
+    // }
 
-    /**
-     * Test to get message roll 3
-     */
-    public function testGetMessageRoll3()
-    {
-        $game = new PlayYatzy();
+    // /**
+    //  * Test to get message roll 3
+    //  */
+    // public function testGetMessageRoll3()
+    // {
+    //     $game = new PlayYatzy();
 
-        $res = $game->getMessage(1, 3);
-        $exp = "Select dices to save.";
-        $this->assertEquals($exp, $res);
-    }
+    //     $res = $game->getMessage(1, 3);
+    //     $exp = "Select dices to save.";
+    //     $this->assertEquals($exp, $res);
+    // }
 
     // /**
     //  * Test to get message roll 4
@@ -240,16 +240,16 @@ class YatzyTest extends TestCase
     /**
      * Test to calculate total score
      */
-    public function testCalculateTotalScore()
-    {
-        $game = new PlayYatzy();
-        $score = [1, 2, 3];
+    // public function testCalculateTotalScore()
+    // {
+    //     $game = new PlayYatzy();
+    //     $score = [1, 2, 3];
 
-        $res = $game->calculateTotalScore($score);
-        $exp = 6;
+    //     $res = $game->calculateTotalScore($score);
+    //     $exp = 6;
 
-        $this->assertEquals($exp, $res);
-    }
+    //     $this->assertEquals($exp, $res);
+    // }
 
     // /**
     //  * Test to check for bonus false

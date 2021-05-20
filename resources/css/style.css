@@ -81,6 +81,7 @@ button {
     border-radius: 8px;
     display: inline-block;
     font-size: 1em;
+    min-width: 8em;
 }
 
 button:hover {
@@ -129,6 +130,25 @@ button:hover {
     text-align: center;
 }
 
+.dice-form {
+    display: grid;
+    grid: 20% / auto auto auto auto auto auto;
+}
+
+.graphics {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.text {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
 .dice {
     font-size: 1.5em;
 }
@@ -154,7 +174,9 @@ i {
 }
 
 .yatzy-div {
-    width: 30%;
+    display: grid;
+    grid: 20% / auto auto auto auto auto auto;
+    grid-gap: 1em;
 }
 
 .checkbox {
@@ -181,6 +203,22 @@ input[type="checkbox"] { /* change "blue" browser chrome to yellow */
   transform: scale(1.5);
 }
 
+input[type="radio"] { /* change "blue" browser chrome to yellow */
+    filter: hue-rotate(139deg) brightness(1.7);
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+}
+
+input[type="text"] {
+    padding: 0.5em;
+    font-size: 1em;
+    margin: 0.2em 0 1em;
+}
+
 .img {
     width: 50%;
 }
@@ -191,11 +229,20 @@ input[type="checkbox"] { /* change "blue" browser chrome to yellow */
     width: 30%;
 }
 
+.highscore {
+    font-size: 1em;
+}
+
 table {
     border: 1px solid rgba(33, 43, 57, 0.267);
     border-collapse: collapse;
     padding: 1em;
     margin: 1.5em 0;
+    font-size: 0.8em;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 8;
 }
 
 th {
@@ -221,8 +268,7 @@ footer {
    background-image: linear-gradient(to right, #252525, #0e0504);
    color: #f2f2f2;
    margin-top: 1em;
-   padding: 1.5em 1em;
-   position: fixed;
+   padding: 2.5em 1em;
    width: 100%;
    top: auto;
    bottom: 0;

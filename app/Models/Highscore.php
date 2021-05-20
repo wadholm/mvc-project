@@ -18,7 +18,7 @@ class Highscore extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     private $highscore;
     public $table = 'highscore';

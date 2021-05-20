@@ -52,9 +52,9 @@ class Dice implements DiceInterface
 
     public function getLastRoll(): int
     {
-        // if ($this->roll == null) {
-        //     throw new DiceException("No dices rolled.");
-        // }
+        if ($this->roll == null) {
+            throw new DiceException("No dices rolled.");
+        }
         return $this->roll;
     }
 

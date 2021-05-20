@@ -17,7 +17,7 @@ class YatzyController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function home(Request $request)
+    public function home()
     {
         // $_SESSION["playerWins"] = $_SESSION["playerWins"] ?? 0;
         // $_SESSION["dataWins"] = $_SESSION["dataWins"] ?? 0;
@@ -28,7 +28,9 @@ class YatzyController extends Controller
         return view('layout.homeYatzy', [
             'title' => 'Yatzy',
             'header' => 'Yatzy',
-            'request' => $request
+            'message' => "Select dices to keep, non selected dices will be rerolled. ",
+            'instructions' => "Choose where to put score into scorebox after maximum three rolls."
+            // 'request' => $request
         ]);
     }
 
@@ -62,43 +64,58 @@ class YatzyController extends Controller
             "request" => $request,
             "numberOfDices" => $request->input("dices", 0),
             "rollDices" => $request->input("rolldices", null),
-            "roll" => $request->input("roll", 0),
-            "round" => $request->input("round", 1)
+            "roll" => $request->input("roll", 0)
+            // "rounds" => $request->session()->put('rounds', session('rounds') ?? $game->getRounds())
         ];
 
+        // $request->session()->put('result', session('result') ?? null);
+        // $request->session()->put('score', session('score') ?? null);
 
-        $request->session()->put('result', session('result') ?? null);
-        $request->session()->put('score', session('score') ?? null);
+        $request->session()->put('rounds', session('rounds') ?? $game->getRounds());
+        $data["rounds"] = session("rounds");
+        $game->setRounds($data["rounds"]);
+
 
         // $_SESSION["result"] = $_SESSION["result"] ?? null;
         // $_SESSION["score"] = $_SESSION["score"] ?? null;
 
 
-        $game->getSessionRounds($request);
 
-        $res = $game->playGame($data["rollDices"], $data["round"], $data["roll"], $request);
+        $res = $game->playGame($data["rollDices"], $data["roll"], $request);
 
-        $data["message"] = $res["message"] ?? null;
         $data["graphics2rolls"] = $res["graphics2rolls"] ?? null;
 
         if (isset($res["numberOfDices"])) {
             $data["numberOfDices"] = $res["numberOfDices"];
         }
 
-        if (isset($res["round"])) {
-            $data["round"] = $res["round"];
+        // if (isset($res["rounds"])) {
+        //     $request->session()->put('rounds', session('rounds') ?? $game->getRounds());
+        //     $data["rounds"] = $res["rounds"];
+        // }
+
+        if (isset($res["message"])) {
+            $data["message"] = $res["message"];
+        }
+
+        if (isset($res["sum"])) {
+            $data["sum"] = $res["sum"];
         }
 
         if (isset($res["roll"])) {
             $data["roll"] = $res["roll"];
         }
 
-        if ($request->session()->has('result')) {
-            $helper = new Helper();
-            $request->session()->put("result", $helper->printHistogram(session("score")));
-
+        if (isset($res["result"])) {
             return redirect('yatzy/result');
         }
+
+        // if ($request->session()->has('result')) {
+        //     $helper = new Helper();
+        //     $request->session()->put("result", $helper->printHistogram(session("score")));
+
+        //     return redirect('yatzy/result');
+        // }
 
         return view('layout.yatzy', $data);
     }
@@ -109,26 +126,21 @@ class YatzyController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function result(Request $request)
+    public function result()
     {
         $data = [
             "title" => "Yatzy",
             "header" => "Yatzy",
-            "request" => $request,
-            "bonus" => false,
-            "score" => session("score", null),
             "totalScore" => 0,
-            "bonusScore" => 50,
             "highscore" => 0,
-            "newHighscore" => false
+            "newHighscore" => false,
+            "rounds" => session("rounds") ?? null
         ];
 
-        $game = new PlayYatzy();
         $handler = new Highscore();
         $data["highscore"] = $handler->getHighscore();
 
-        $data["totalScore"] = $game->calculateTotalScore($data["score"]);
-        $data["bonus"] = $game->checkForBonus();
+        $data["totalScore"] = $data["rounds"]["TOTAL"];
 
         if ($data["totalScore"] >= $data["highscore"]) {
             $data["newHighscore"] = true;

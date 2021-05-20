@@ -2,6 +2,7 @@
 
 use Mack\Dice\GraphicalDice;
 use Mack\Dice\DiceHand;
+use Mack\Helper\Helper;
 
 $hand = new DiceHand();
 
@@ -10,12 +11,19 @@ $hand->addDice(new GraphicalDice());
 
 $data["graphicalDice"] = [];
 
+$diceHand = new DiceHand();
+$helper = new Helper();
+
+$diceHand = $helper->addDices2($diceHand, 2, [5, 6, 6]);
+$diceHand->roll();
+echo $diceHand->getHand();
+
 
 $hand->roll();
 
 $playerSum = $hand->sum();
 
-$data["graphicalDice"] = $hand->getGraphics();
+$data["graphicalDice"] = $diceHand->getGraphics();
 
 ?>
 

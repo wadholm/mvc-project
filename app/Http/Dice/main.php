@@ -1,17 +1,21 @@
 <?php
 
-declare(strict_types=1);
+// declare(strict_types=1);
 
-// Get the autoloader
-// require __DIR__ . "/../../vendor/autoload.php";
+// // Get the autoloader
+// // require __DIR__ . "/../../vendor/autoload.php";
+// namespace Mack\Dice;
 
-// use Mack\Dice\Dice;
-// use Mack\Dice\GraphicalDice;
-// use Mack\Dice\DiceHand;
+// use Mack\Helper\Helper;
 
 
-// $die = new GraphicalDice();
+// // $die = new GraphicalDice();
+// $diceHand = new DiceHand();
+// $helper = new Helper();
 
+// $diceHand = $helper->addDices2($diceHand, 3, 2, 2);
+// $diceHand->roll();
+// echo $diceHand->getHand();
 // // for ($i = 0; $i < 9; $i++) {
 // //     $die->roll();
 // //     echo $die->getLastRoll() . ", ";
