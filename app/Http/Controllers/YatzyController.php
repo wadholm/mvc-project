@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mack\Game\PlayYatzy;
-use Mack\Helper\Helper;
 use Mack\Highscore\HighscoreHandler;
+use Mack\Result\ResultHandler;
 use App\Models\Highscore;
+use App\Models\Result;
 
 class YatzyController extends Controller
 {
@@ -137,6 +138,9 @@ class YatzyController extends Controller
             "rounds" => session("rounds") ?? null
         ];
 
+        $result = new ResultHandler();
+        $result->addResult($data["rounds"]);
+
         $handler = new Highscore();
         $data["highscore"] = $handler->getHighscore();
 
@@ -184,5 +188,25 @@ class YatzyController extends Controller
         $data["result"] = $handler->presentHighscore();
 
         return view('layout.highscore', $data);
+    }
+
+    /**
+     * Display the statistics page.
+     *
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function statistics()
+    {
+        $data = [
+            "title" => "Yatzy Statistics",
+            "header" => "Yatzy Statistics",
+            "message" => "Presenting statistics for the last ten games of Yatzy.",
+        ];
+
+        $result = new Result();
+        $data["result"] = $result->presentResult();
+
+        return view('layout.statistic', $data);
     }
 }

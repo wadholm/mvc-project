@@ -25,7 +25,7 @@ class PlayYatzy
 {
     public $numberOfDices = 5;
     public $checkedBoxes;
-    public array $savedDices = [];
+    public $savedDices = [];
     public $choosenRound;
     public $res;
     public $graphics;

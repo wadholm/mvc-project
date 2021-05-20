@@ -40,7 +40,7 @@ $newHighscore = $newHighscore ?? null;
 
 <table>
     <tr>
-        <th>Game</th>
+        <th>Scorebox</th>
         <th> </th>
     </tr>
     @foreach ($rounds as $r => $r_value)

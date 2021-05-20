@@ -48,6 +48,7 @@ Route::any('/yatzy/play', [YatzyController::class, 'play']);
 Route::get('/yatzy/result', [YatzyController::class, 'result']);
 Route::any('/yatzy/highscore/add', [YatzyController::class, 'addHighscore']);
 Route::get('/yatzy/highscore', [YatzyController::class, 'highscore']);
+Route::get('/yatzy/statistics', [YatzyController::class, 'statistics']);
 
 Route::get('/books', [BookController::class, 'book']);
 
