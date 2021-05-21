@@ -27,6 +27,20 @@ class HelperTest extends TestCase
     }
 
     /**
+     * Test the function adddices().
+     *
+     */
+    public function testAddDices2()
+    {
+        $helper = new Helper();
+        $diceHand = new DiceHand();
+        $numberOfDices = 3;
+        $savedDices = [1, 2];
+        $res = $helper->addDices2($diceHand, $numberOfDices, $savedDices);
+        $this->assertIsObject($res);
+    }
+
+    /**
      * Test the function printHistogram().
      *
      */
