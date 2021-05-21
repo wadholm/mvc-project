@@ -216,6 +216,7 @@ class Score
         $this->rounds[$choosenRound] = $this->score;
         $this->rounds["TOTAL"] += $this->score;
 
+        $this->res["score"] = $this->score;
         $this->res["rounds"] = $this->rounds;
         $this->res["message"] = $choosenRound . " : You scored " . $this->score . ". Your score will be added. ";
         return $this->res;

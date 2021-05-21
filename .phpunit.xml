@@ -6,7 +6,10 @@
 >
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./app/Http/Controllers</directory>
+            <directory suffix=".php">./app/Http/Dice</directory>
+            <directory suffix=".php">./app/Http/Game</directory>
+            <directory suffix=".php">./app/Http/Helper</directory>
         </include>
         <report>
             <clover outputFile="build/coverage.clover"/>

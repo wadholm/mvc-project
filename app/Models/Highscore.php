@@ -42,4 +42,12 @@ class Highscore extends Model
 
         return $this->highscore;
     }
+
+    public function addHighscore($name, $score)
+    {
+        $this->name = $name;
+        $this->score = $score;
+
+        $this->save();
+    }
 }

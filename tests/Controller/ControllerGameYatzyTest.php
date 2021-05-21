@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Mack\Game\PlayYatzy;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
+use Tests\TestCase;
+use Illuminate\Http\Request;
 
 /**
  * Test cases for the controller GameYatzy.
@@ -20,6 +20,51 @@ class ControllerYatzyTest extends TestCase
     {
         $controller = new YatzyController();
         $this->assertInstanceOf("\App\Http\Controllers\YatzyController", $controller);
+    }
+
+    public function testYatzyHome()
+    {
+        $controller = new YatzyController();
+        $res = $controller->home();
+
+        $this->assertInstanceOf("Illuminate\View\View", $res);
+    }
+
+    public function testYatzyResult()
+    {
+        $controller = new YatzyController();
+
+        $res = $controller->result();
+
+        $this->assertInstanceOf("Illuminate\View\View", $res);
+    }
+
+    public function testYatzyAddHighscore()
+    {
+        $controller = new YatzyController();
+        $request = new Request();
+
+        $res = $controller->addHighscore($request);
+
+        $this->assertInstanceOf("Illuminate\Http\RedirectResponse", $res);
+    }
+
+    public function testYatzyHighscore()
+    {
+        $controller = new YatzyController();
+
+        $res = $controller->highscore();
+
+        $this->assertInstanceOf("Illuminate\View\View", $res);
+    }
+
+    public function testYatzyStatistics()
+    {
+        $controller = new YatzyController();
+
+        $res = $controller->statistics();
+
+        $this->assertInstanceOf("Illuminate\View\View", $res);
     }
 
     // /**

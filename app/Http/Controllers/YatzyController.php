@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mack\Game\PlayYatzy;
-use Mack\Highscore\HighscoreHandler;
-use Mack\Result\ResultHandler;
 use App\Models\Highscore;
 use App\Models\Result;
 
@@ -56,7 +54,12 @@ class YatzyController extends Controller
     public function play(Request $request)
     {
         $game = new PlayYatzy();
-        $game->startGame($request);
+        if ($request->has('start')) {
+            // session(['result' => null]);
+            // session(['score' => null]);
+            $game->startGame();
+            // $this->resetSessionRounds($request);
+        }
 
         $data = [
             "header" => "Yatzy",
@@ -138,13 +141,15 @@ class YatzyController extends Controller
             "rounds" => session("rounds") ?? null
         ];
 
-        $result = new ResultHandler();
-        $result->addResult($data["rounds"]);
+        $result = new Result();
+        if (isset($data["rounds"])) {
+            $result->addResult($data["rounds"]);
+            $data["totalScore"] = $data["rounds"]["TOTAL"];
+        }
 
         $handler = new Highscore();
         $data["highscore"] = $handler->getHighscore();
 
-        $data["totalScore"] = $data["rounds"]["TOTAL"];
 
         if ($data["totalScore"] >= $data["highscore"]) {
             $data["newHighscore"] = true;
@@ -164,8 +169,10 @@ class YatzyController extends Controller
         $name = $request->input('name');
         $score = $request->input('score');
 
-        $handler = new HighscoreHandler();
-        $handler->addHighscore($name, $score);
+        if ($name != null) {
+            $handler = new Highscore();
+            $handler->addHighscore($name, $score);
+        }
 
         return redirect('yatzy/highscore');
     }

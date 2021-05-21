@@ -24,10 +24,10 @@ use Mack\Game\Score;
 class PlayYatzy
 {
     public $numberOfDices = 5;
-    public $checkedBoxes;
+    public $checkedBoxes = 0;
     public $savedDices = [];
     public $choosenRound;
-    public $res;
+    public $res = [];
     public $graphics;
     public $dices = [
         "dice-1",
@@ -42,19 +42,18 @@ class PlayYatzy
         "Small Straight" => "", "Large Straight" => "", "Full House" => "", "Chance" => "", "YATZY" => "", "TOTAL" => 0
         );
 
-    public function startGame($request)
+    public function startGame()
     {
+        session(['rounds' => null]);
+        return "yatzy started";
         // if (isset($_POST["start"])) {
         //     $_SESSION["result"] = null;
         //     $_SESSION["score"] = null;
         //     $this->resetSessionRounds();
         // }
-        if ($request->has('start')) {
             // session(['result' => null]);
             // session(['score' => null]);
-            session(['rounds' => null]);
             // $this->resetSessionRounds($request);
-        }
     }
 
     public function getRounds()
