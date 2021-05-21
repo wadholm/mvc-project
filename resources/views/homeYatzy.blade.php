@@ -1,13 +1,16 @@
 <?php
 
-$destroy = url("/yatzy/destroy");
-$play = url("/yatzy/play");
+$destroy = url("/destroy");
+$play = url("/play");
+$image = url("/../resources/img/dices.jpg");
 
 $numberOfDices = 5;
 
 ?>
-
+<div class="index">
 <h1>{{ $header }}</h1>
+
+<img class="img" src="{{ $image }}" alt="dices">
 
 <p>{{ $message }}</p>
 <p>{{ $instructions }}</p>
@@ -25,3 +28,4 @@ $numberOfDices = 5;
     <a class="reset" href="{{ $destroy }}">Reset score</a>
 </button>
 </p>
+</div>

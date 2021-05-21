@@ -1,6 +1,6 @@
 <?php
 
-$play = url("/yatzy/play");
+$play = url("/play");
 
 $header = $header ?? null;
 $message = $message ?? null;
@@ -23,7 +23,7 @@ if ($roll == 3) {
 
 
 ?>
-
+<div class="container">
 <form class="dice-form" method="POST" action="{{ $play }}">
 <div class="text">
 <h1>{{  $header  }}</h1>
@@ -87,3 +87,4 @@ if ($roll == 3) {
 </div>
 
 </form>
+</div>

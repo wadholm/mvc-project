@@ -1,7 +1,7 @@
 <?php
 
-$home = url("/yatzy/home");
-$addHighscore = url("/yatzy/highscore/add");
+$home = url("/home");
+$addHighscore = url("/highscore/add");
 
 
 $header = $header ?? null;
@@ -12,6 +12,7 @@ $highscore = $highscore ?? null;
 $newHighscore = $newHighscore ?? null;
 
 ?>
+<div class="container">
 <div class="yatzy-div">
 <div class="text">
 
@@ -50,6 +51,8 @@ $newHighscore = $newHighscore ?? null;
     </tr>
     @endforeach
 </table>
-<div>
+</div>
+</div>
+
 
 

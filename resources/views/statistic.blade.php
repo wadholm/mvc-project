@@ -1,3 +1,4 @@
+<div class="container">
 
 <h1>{{ $header }}</h1>
 
@@ -25,3 +26,4 @@
   </tr>
 @endforeach
 </table>
+</div>

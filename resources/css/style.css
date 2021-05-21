@@ -12,8 +12,26 @@ body {
     margin: 0;
     line-height: 1.4;
     font-family: 'Inter', sans-serif;
-    background-color: #fafafa;
-    color: rgb(14, 25, 43);
+    background-color: #010101;
+    color: #fafafa;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    min-height: 38em;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: #eaeaea;
+    color: #010101;
+}
+
+.index {
+    width: 80%;
+    margin: auto;
+    min-height: 38em;
+    padding: 2em;
+    border-radius: 1em;
 }
 
 main {

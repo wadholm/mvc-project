@@ -28,19 +28,26 @@ use App\Http\Controllers\BookController;
 // );
 // });
 
-Route::get('/', [IndexController::class, 'index']);
+
+Route::get('/', [YatzyController::class, 'home']);
+Route::get('/destroy', [YatzyController::class, 'destroy']);
+Route::any('/play', [YatzyController::class, 'play']);
+Route::get('/result', [YatzyController::class, 'result']);
+Route::any('/highscore/add', [YatzyController::class, 'addHighscore']);
+Route::get('/highscore', [YatzyController::class, 'highscore']);
+Route::get('/statistics', [YatzyController::class, 'statistics']);
 
 Route::get('/session', [SessionController::class, 'session']);
 Route::get('/session/destroy', [SessionController::class, 'destroy']);
 
 Route::get('/test', [TestController::class, 'test']);
 
-Route::get('/yatzy/home', [YatzyController::class, 'home']);
-Route::get('/yatzy/destroy', [YatzyController::class, 'destroy']);
-Route::any('/yatzy/play', [YatzyController::class, 'play']);
-Route::get('/yatzy/result', [YatzyController::class, 'result']);
-Route::any('/yatzy/highscore/add', [YatzyController::class, 'addHighscore']);
-Route::get('/yatzy/highscore', [YatzyController::class, 'highscore']);
-Route::get('/yatzy/statistics', [YatzyController::class, 'statistics']);
+// Route::get('/yatzy/home', [YatzyController::class, 'home']);
+// Route::get('/yatzy/destroy', [YatzyController::class, 'destroy']);
+// Route::any('/yatzy/play', [YatzyController::class, 'play']);
+// Route::get('/yatzy/result', [YatzyController::class, 'result']);
+// Route::any('/yatzy/highscore/add', [YatzyController::class, 'addHighscore']);
+// Route::get('/yatzy/highscore', [YatzyController::class, 'highscore']);
+// Route::get('/yatzy/statistics', [YatzyController::class, 'statistics']);
 
 Route::get('/books', [BookController::class, 'book']);
