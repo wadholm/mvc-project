@@ -1,6 +1,6 @@
 </main>
 <footer>
-    <p>Game21</p>
+    <p>© by Malin Wadholm 2021</p>
 </footer>
 </body>
 </html>

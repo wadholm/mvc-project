@@ -15,11 +15,15 @@ $numberOfDices = 5;
 <p>{{ $message }}</p>
 <p>{{ $instructions }}</p>
 
-<form method="POST" action="{{ $play }}">
+<form class="index-form" method="POST" action="{{ $play }}">
 @csrf
 <input type="hidden" id="start" name="start" value="start">
 <input type="hidden" id="dices" name="dices" value="{{ $numberOfDices }}">
-<button name="start" type="submit">Start game</button>
+<input type="hidden" id="rolldices" name="rolldices" value="rolldices">
+<input type="hidden" id="roll" name="roll" value="1">
+
+
+<button class="start" name="start" type="submit">Start game</button>
 
 </form>
 

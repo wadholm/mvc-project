@@ -8,14 +8,10 @@ $message = $message ?? null;
 $diceHand = $diceHand ?? null;
 $numberOfDices = $numberOfDices ?? null;
 $sum = $sum ?? null;
-// $graphicalDice = $graphicalDice ?? null;
 $roll = $roll ?? null;
 $required = "";
 $rounds = $rounds ?? null;
 $graphics2rolls = $graphics2rolls ?? null;
-// $rounds = array("Ones"=>3, "Twos"=>"", "Threes"=>"", "Fours"=>"", "Fives"=>"", "Sixes"=>"",
-// "TOTAL"=>"", "BONUS"=>"", "Pair"=>"", "Two Pair"=>"", "3 of a kind"=>"",
-// "4 of a kind"=>"", "Small Straight"=>"", "Large Straight"=>"", "Full house"=>"", "Chance"=>"", "YATZY"=>"", "TOTAL"=>"");
 
 if ($roll == 3) {
     $required = "required";
@@ -29,6 +25,7 @@ if ($roll == 3) {
 <h1>{{  $header  }}</h1>
 
 <p>{{  $message }}</p>
+
 
 @if ($roll != 0)
 <p>Roll {{ $roll }}</p>
@@ -75,14 +72,14 @@ if ($roll == 3) {
 <input type="hidden" id="dices" name="dices" value="5">
 <input type="hidden" id="roll" name="roll" value="{{ $roll + 1 }}">
 
-@if ($roll < 1)
-<button name="rolldices" type="submit" value="rolldices">Roll dices</button>
+@if ($roll == 0)
+<button class="roll" name="rolldices" type="submit" value="rolldices">Roll</button>
 
 @elseif ($roll < 3)
-<button name="rolldices" type="submit" value="rolldices">Reroll/Save</button>
+<button class="roll" name="rolldices" type="submit" value="rolldices">Reroll/Save</button>
 
 @elseif ($roll == 3)
-<button name="rolldices" type="submit" value="rolldices">Save</button>
+<button class="roll" name="rolldices" type="submit" value="rolldices">Save</button>
 @endif
 </div>
 

@@ -9,6 +9,7 @@ html {
 }
 
 body {
+    width: 100%;
     margin: 0;
     line-height: 1.4;
     font-family: 'Inter', sans-serif;
@@ -20,8 +21,7 @@ body {
     width: 80%;
     margin: auto;
     min-height: 38em;
-    padding: 2em;
-    border-radius: 1em;
+    padding: 1em;
     background-color: #eaeaea;
     color: #010101;
 }
@@ -38,13 +38,17 @@ main {
     width: 90%;
     min-height: 25em;
     display: block;
-    margin: 1em auto;
+    margin: 3em auto;
     padding-bottom: 10em
+}
+
+h1, p {
+    text-align: center;
 }
 
 nav {
     overflow: hidden;
-    background-color: #0e0504;
+    background-image: linear-gradient(to right, #191919, black);
 }
 
 nav a {
@@ -53,7 +57,7 @@ nav a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.2em;
 }
 
 nav a:hover {
@@ -89,7 +93,7 @@ label {
     display: block;
 }
 
-button {
+.start {
     background-color: rgb(236, 236, 236);
     border: 2px solid black;
     padding: 0.5em 1em;
@@ -102,8 +106,28 @@ button {
     min-width: 8em;
 }
 
-button:hover {
+.start:hover {
     background-color: rgb(207, 207, 207);
+}
+
+.roll {
+    background-image: linear-gradient(to bottom, rgb(244, 70, 70) , rgba(244, 70, 70, 0.807));
+    opacity: 1;
+    color: white;
+    border: none;
+    padding: 0.8em 1em;
+    margin: 1em 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 1em;
+    min-width: 8em;
+}
+
+.roll:hover {
+    color: white;
+    background-color: rgb(205, 34, 34);
 }
 
 .reset,
@@ -149,20 +173,26 @@ button:hover {
 }
 
 .dice-form {
+    text-align: center;
     display: grid;
-    grid: 20% / auto auto auto auto auto auto;
+    grid: 15% / 55% auto auto auto auto;
+}
+
+.index-form {
+    margin: auto;
+    text-align: center;
 }
 
 .graphics {
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
     grid-row-start: 5;
     grid-row-end: 6;
 }
 
 .text {
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
 }
@@ -193,7 +223,7 @@ i {
 
 .yatzy-div {
     display: grid;
-    grid: 20% / auto auto auto auto auto auto;
+    grid: 20% / 50% auto auto auto auto auto;
     grid-gap: 1em;
 }
 
@@ -238,14 +268,10 @@ input[type="text"] {
 }
 
 .img {
+    margin: 1em auto;
+    display: block;
     width: 50%;
     filter: hue-rotate(347deg) brightness(1.10);
-}
-
-.books {
-    padding-right: 1em;
-    display: inline-block;
-    width: 30%;
 }
 
 .highscore {
@@ -256,7 +282,7 @@ table {
     border: 1px solid rgba(33, 43, 57, 0.267);
     border-collapse: collapse;
     padding: 1em;
-    margin: 1.5em 0;
+    margin: 1.5em auto;
     font-size: 0.8em;
     grid-column-start: 3;
     grid-column-end: 3;
@@ -266,7 +292,7 @@ table {
 
 th {
     background-color: #252525;
-    color: #f2f2f2;
+    color: #fafafa;
     border-collapse: collapse;
     padding: 0.5em 1em;
 }
@@ -284,7 +310,7 @@ td {
 }
 
 footer {
-   background-image: linear-gradient(to right, #252525, #0e0504);
+   background-image: linear-gradient(to right, #191919, black);
    color: #f2f2f2;
    margin-top: 1em;
    padding: 3.5em 1em;

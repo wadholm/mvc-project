@@ -42,7 +42,7 @@ class YatzyController extends Controller
     public function destroy(Request $request)
     {
         $request->session()->flush();
-        return redirect('yatzy/home');
+        return redirect('/');
     }
 
     /**
@@ -68,7 +68,8 @@ class YatzyController extends Controller
             "request" => $request,
             "numberOfDices" => $request->input("dices", 0),
             "rollDices" => $request->input("rolldices", null),
-            "roll" => $request->input("roll", 0)
+            "roll" => $request->input("roll", 0),
+            "rounds" => $game->getRounds()
             // "rounds" => $request->session()->put('rounds', session('rounds') ?? $game->getRounds())
         ];
 
@@ -111,7 +112,7 @@ class YatzyController extends Controller
         }
 
         if (isset($res["result"])) {
-            return redirect('yatzy/result');
+            return redirect('/result');
         }
 
         // if ($request->session()->has('result')) {
@@ -142,7 +143,8 @@ class YatzyController extends Controller
         ];
 
         $result = new Result();
-        if (isset($data["rounds"])) {
+
+        if ($data["rounds"] != null) {
             $result->addResult($data["rounds"]);
             $data["totalScore"] = $data["rounds"]["TOTAL"];
         }
@@ -174,7 +176,7 @@ class YatzyController extends Controller
             $handler->addHighscore($name, $score);
         }
 
-        return redirect('yatzy/highscore');
+        return redirect('/highscore');
     }
 
     /**
