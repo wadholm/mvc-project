@@ -30,6 +30,14 @@ class ControllerYatzyTest extends TestCase
         $this->assertInstanceOf("Illuminate\View\View", $res);
     }
 
+    public function testYatzyRules()
+    {
+        $controller = new YatzyController();
+        $res = $controller->rules();
+
+        $this->assertInstanceOf("Illuminate\View\View", $res);
+    }
+
     public function testYatzyResult()
     {
         $controller = new YatzyController();

@@ -34,6 +34,26 @@ class YatzyController extends Controller
     }
 
     /**
+     * Display the how to page.
+     *
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function rules()
+    {
+
+        return view('layout.rulesYatzy', [
+            'title' => 'Yatzy',
+            'header' => 'How to play Yatzy?',
+            'message' => "The Yatzy is played with five dices. The game consists of thirteen rounds, when all rounds have been played the result is presented. " .
+            "The user rolls the dices a maxium of three rolls per round. The aim is to get as high a score as possible. " .
+            "To get the bonus of 50 additional points the user must get 63 points or more from the first six rounds (Aces to Sixes). " .
+            "If the user rolls five dices with the same faces you get Yatzy, also worth 50 points. "
+            // 'request' => $request
+        ]);
+    }
+
+    /**
      * Destroy the session to reset score.
      *
      *

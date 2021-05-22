@@ -34,6 +34,18 @@ body {
     border-radius: 1em;
 }
 
+.rules {
+    width: 60%;
+    margin: auto;
+    min-height: 38em;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.rules p {
+    text-align: left;
+}
+
 main {
     width: 90%;
     min-height: 25em;

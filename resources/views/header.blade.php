@@ -4,6 +4,7 @@ $favicon = url("/../resources/img/favicon.ico");
 $style = url("/../resources/css/style.css");
 
 $home = url('/');
+$rules = url("/rules");
 $highscore = url("/highscore");
 $statistics = url("/statistics");
 
@@ -23,6 +24,7 @@ $statistics = url("/statistics");
 <header>
     <nav>
         <a class="active" href="{{ $home }}">Yatzy</a>
+        <a href="{{ $rules }}">Rules</a>
         <a href="{{ $highscore }}">High Score</a>
         <a href="{{ $statistics }}">Statistics</a>
     </nav>

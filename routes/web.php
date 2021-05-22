@@ -31,6 +31,7 @@ use App\Http\Controllers\BookController;
 
 Route::get('/', [YatzyController::class, 'home']);
 Route::get('/destroy', [YatzyController::class, 'destroy']);
+Route::any('/rules', [YatzyController::class, 'rules']);
 Route::any('/play', [YatzyController::class, 'play']);
 Route::get('/result', [YatzyController::class, 'result']);
 Route::any('/highscore/add', [YatzyController::class, 'addHighscore']);
