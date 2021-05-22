@@ -204,7 +204,7 @@ class YatzyController extends Controller
         $data = [
             "title" => "Yatzy High Score",
             "header" => "Yatzy High Score",
-            "message" => "Presenting the High Score for Yatzy Game",
+            "message" => "Presenting the High Score for Yatzy.",
         ];
 
         $handler = new Highscore();

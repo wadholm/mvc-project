@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621708124">
-  <project timestamp="1621708124">
+<coverage generated="1621709897">
+  <project timestamp="1621709897">
     <file name="/Users/mwadholm/dbwebb-kurser/mvc/me/proj/app/Http/Controllers/BookController.php">
       <class name="App\Http\Controllers\BookController" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="23" coveredelements="0"/>

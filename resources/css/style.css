@@ -14,7 +14,7 @@ body {
     line-height: 1.4;
     font-family: 'Inter', sans-serif;
     background-color: #010101;
-    color: #fafafa;
+    color: #f1f1f1;
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
     margin: auto;
     min-height: 38em;
     padding: 1em;
-    background-color: #eaeaea;
+    background-color: #eeeeee;
     color: #010101;
 }
 
@@ -293,7 +293,23 @@ input[type="text"] {
 }
 
 .highscore {
+    min-width: 22em;
     font-size: 1em;
+}
+
+.highscore th {
+    background-color: rgba(243, 51, 51, 0.916);
+    color: white;
+    border-collapse: collapse;
+    padding: 0.5em 1em;
+}
+
+.highscore tr:nth-child(even) {
+    background-color: #191919;
+}
+
+.highscore tr:nth-child(odd) {
+    background-color: #252525;
 }
 
 table {

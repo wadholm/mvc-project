@@ -1,4 +1,4 @@
-<div class="container">
+<div class="index">
 
 <h1>{{ $header }}</h1>
 
