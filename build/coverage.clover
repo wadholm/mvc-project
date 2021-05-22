@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621683175">
-  <project timestamp="1621683175">
+<coverage generated="1621708124">
+  <project timestamp="1621708124">
     <file name="/Users/mwadholm/dbwebb-kurser/mvc/me/proj/app/Http/Controllers/BookController.php">
       <class name="App\Http\Controllers\BookController" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="23" coveredelements="0"/>
@@ -120,27 +120,27 @@
       <line num="164" type="stmt" count="0"/>
       <line num="167" type="stmt" count="1"/>
       <line num="168" type="stmt" count="1"/>
-      <line num="171" type="stmt" count="1"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="175" type="stmt" count="1"/>
-      <line num="184" type="method" name="addHighscore" visibility="public" complexity="2" crap="2.15" count="1"/>
+      <line num="170" type="stmt" count="1"/>
+      <line num="171" type="stmt" count="0"/>
+      <line num="174" type="stmt" count="1"/>
+      <line num="183" type="method" name="addHighscore" visibility="public" complexity="2" crap="2.15" count="1"/>
+      <line num="185" type="stmt" count="1"/>
       <line num="186" type="stmt" count="1"/>
-      <line num="187" type="stmt" count="1"/>
-      <line num="189" type="stmt" count="1"/>
+      <line num="188" type="stmt" count="1"/>
+      <line num="189" type="stmt" count="0"/>
       <line num="190" type="stmt" count="0"/>
-      <line num="191" type="stmt" count="0"/>
-      <line num="194" type="stmt" count="1"/>
-      <line num="203" type="method" name="highscore" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="206" type="stmt" count="1"/>
+      <line num="193" type="stmt" count="1"/>
+      <line num="202" type="method" name="highscore" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="205" type="stmt" count="1"/>
+      <line num="210" type="stmt" count="1"/>
       <line num="211" type="stmt" count="1"/>
-      <line num="212" type="stmt" count="1"/>
-      <line num="214" type="stmt" count="1"/>
-      <line num="223" type="method" name="statistics" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="226" type="stmt" count="1"/>
+      <line num="213" type="stmt" count="1"/>
+      <line num="222" type="method" name="statistics" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="225" type="stmt" count="1"/>
+      <line num="230" type="stmt" count="1"/>
       <line num="231" type="stmt" count="1"/>
-      <line num="232" type="stmt" count="1"/>
-      <line num="234" type="stmt" count="1"/>
-      <metrics loc="236" ncloc="188" classes="1" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="27" elements="69" coveredelements="31"/>
+      <line num="233" type="stmt" count="1"/>
+      <metrics loc="235" ncloc="187" classes="1" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="27" elements="69" coveredelements="31"/>
     </file>
     <file name="/Users/mwadholm/dbwebb-kurser/mvc/me/proj/app/Http/Dice/CheatDice.php">
       <class name="Mack\Dice\CheatDice" namespace="global">
@@ -548,6 +548,6 @@
       <line num="88" type="stmt" count="1"/>
       <metrics loc="91" ncloc="76" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="40" elements="43" coveredelements="43"/>
     </file>
-    <metrics files="19" loc="1392" ncloc="1056" classes="13" methods="58" coveredmethods="42" conditionals="0" coveredconditionals="0" statements="387" coveredstatements="287" elements="445" coveredelements="329"/>
+    <metrics files="19" loc="1391" ncloc="1055" classes="13" methods="58" coveredmethods="42" conditionals="0" coveredconditionals="0" statements="387" coveredstatements="287" elements="445" coveredelements="329"/>
   </project>
 </coverage>

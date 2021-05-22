@@ -165,10 +165,9 @@ class YatzyController extends Controller
         }
 
         $handler = new Highscore();
-        $data["highscore"] = $handler->getHighscore();
+        $highscore = $handler->getHighscore();
 
-
-        if ($data["totalScore"] >= $data["highscore"]) {
+        if ($data["totalScore"] > $highscore) {
             $data["newHighscore"] = true;
         }
 

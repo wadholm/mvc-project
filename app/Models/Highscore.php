@@ -38,9 +38,16 @@ class Highscore extends Model
 
     public function getHighscore()
     {
-        $this->highscore = self::max('score');
+        // $this->highscore = self::max('score');
 
-        return $this->highscore;
+        $this->highscore = self::select('score')->orderBy('score', 'desc')->limit(10)->get();
+        $this->highscore = collect($this->highscore)->min();
+        $this->result = $this->highscore->score;
+
+
+        return $this->result;
+
+        // return $this->highscore;
     }
 
     public function addHighscore($name, $score)

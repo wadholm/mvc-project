@@ -195,6 +195,12 @@ label {
     text-align: center;
 }
 
+.highscore-form {
+    margin: auto;
+    text-align: center;
+
+}
+
 .graphics {
     grid-column-start: 1;
     grid-column-end: 3;
