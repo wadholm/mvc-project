@@ -48,7 +48,7 @@ php -S localhost:8080 -t public
 
 #### Make it run in your local server  
 
-Open a browser to local server (e.g., Apache, XAMPP) and find the "public/" directory.  
+Open a browser to your local server (e.g., Apache, XAMPP) and find the "public/" directory.  
 
 If an error accurs:  
 
@@ -58,5 +58,18 @@ Make the storage directory writable by the web server:
 ```
 chmod -R o+w storage/
 ```
+
+#### Add database
+
+add your database in config/database.php and in .env  
+
+See .env example:  
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database
+DB_USERNAME=username
+DB_PASSWORD=password
 
 Reload the page and play Yatzy!
