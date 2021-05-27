@@ -61,7 +61,7 @@ chmod -R o+w storage/
 
 #### Add database
 
-add your database in config/database.php and in .env  
+Add your database in config/database.php and in .env  
 
 .env example:  
 

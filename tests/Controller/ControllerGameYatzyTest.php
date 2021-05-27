@@ -38,14 +38,14 @@ class ControllerYatzyTest extends TestCase
         $this->assertInstanceOf("Illuminate\View\View", $res);
     }
 
-    public function testYatzyResult()
-    {
-        $controller = new YatzyController();
+    // public function testYatzyResult()
+    // {
+    //     $controller = new YatzyController();
 
-        $res = $controller->result();
+    //     $res = $controller->result();
 
-        $this->assertInstanceOf("Illuminate\View\View", $res);
-    }
+    //     $this->assertInstanceOf("Illuminate\View\View", $res);
+    // }
 
     public function testYatzyAddHighscore()
     {
