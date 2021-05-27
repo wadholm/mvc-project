@@ -46,9 +46,9 @@ Verify installation with the following command:
 php -S localhost:8080 -t public
 ```
 
-#### Make it run in your own local server.  
+#### Make it run in your local server  
 
-Open a browser to localhost and find the "public/" directory.  
+Open a browser to local server (e.g., Apache, XAMPP) and find the "public/" directory.  
 
 If an error accurs:  
 
