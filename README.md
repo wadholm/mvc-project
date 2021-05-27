@@ -37,15 +37,16 @@ If the user acchieved a new highscore the user will be able to add it's name to 
 
 ### Install
 
-On the main page of this repository, below the name and above the list of files click "Code". 
+On the main page of this repository, below the name and above the list of files click "Code".  
 Choose your preference of downloading as zip or clone the repository and change the working directory where you want the clone.  
 
 On the command line, open repository.  
 Verify installation with the following command:  
+```
+php -S localhost:8080 -t public
+```
 
-php -S localhost:8080 -t public  
-
-Make it run in your own local server.  
+#### Make it run in your own local server.  
 
 Open a browser to localhost and find the "public/" directory.  
 
@@ -54,7 +55,8 @@ If an error accurs:
 > The stream or file "...storage/logs/laravel.log" could not be opened in append mode: failed to open stream: Permission denied  
 
 Make the storage directory writable by the web server:  
-
-chmod -R o+w storage/  
+```
+chmod -R o+w storage/
+```
 
 Reload the page and play Yatzy!
