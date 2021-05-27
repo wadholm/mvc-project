@@ -63,13 +63,13 @@ chmod -R o+w storage/
 
 add your database in config/database.php and in .env  
 
-See .env example:  
+.env example:  
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=database
-DB_USERNAME=username
-DB_PASSWORD=password
+DB_CONNECTION=mysql  
+DB_HOST=127.0.0.1  
+DB_PORT=3306  
+DB_DATABASE=database  
+DB_USERNAME=username  
+DB_PASSWORD=password  
 
 Reload the page and play Yatzy!
